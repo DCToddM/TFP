@@ -1,0 +1,27 @@
+﻿@using TFP.Domain.Entities
+@model TFP.WebUI.Models.vmAccountsList
+
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<h2>Accounts</h2>
+@foreach (var p in Model.Accounts)
+{
+    <div class="well">
+        <h3>
+            <strong>@p.AccountName</strong>
+            <span class="pull-right label label-primary">
+                @p.AccountBalance
+            </span> 
+        </h3>
+        <span class="lead">
+            @p.AccountType
+            @p.AccountNumber
+        </span>
+    </div>
+}
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {  page = x }))
+</div>
+
